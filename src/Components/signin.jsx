@@ -29,7 +29,8 @@ function Signin() {
 
                     setPassword('')
                     setusername('')
-                    setClientToken(response.data.message.data)
+                    setClientToken(response.data.message.data.user_id)
+                    console.log(response.data.message.data.user_id)
                     setSuccess(response.data.message.message);
                     setError(null)
                     const interval = setTimeout(() => {
@@ -62,7 +63,7 @@ function Signin() {
         <>
             {Success && <SuccessAlert txt={Success}/>}
             <Dialog
-                size="sm"
+                size=""
                 open={opensignin}
                 handler={handleOpenSignin}
                 className="bg-transparent flex shadow-none"

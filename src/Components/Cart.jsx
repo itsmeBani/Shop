@@ -33,6 +33,14 @@ const  HandleQuantity= async (cartid,quantity)=>{
         console.error('Error fetching current user', error);
     }
 }
+let total=0
+
+    for (let i = 0; i < viewcart?.length; i++) {
+        total +=parseFloat(viewcart[i].quantity * viewcart[i].price)
+        console.log(total)
+    }
+
+
 
     return (
         <>
@@ -61,9 +69,10 @@ const  HandleQuantity= async (cartid,quantity)=>{
                                             <ul role="list" className="-my-6 h-full divide-y divide-gray-200">
                                                 {
                                                     viewcart?.map((cart)=>{
+
                                                         return (
 
-                                                            <li className="flex  py-6" key={cart.id}>
+                                                            <li className="flex  py-6" key={cart.cart_id}>
                                                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                                     <img
                                                                         src={cart.imageUrl}
@@ -78,7 +87,7 @@ const  HandleQuantity= async (cartid,quantity)=>{
                                                                             <h3>
                                                                                 <a href="#">{cart.product_name}</a>
                                                                             </h3>
-                                                                            <p className="ml-4">₱{cart.price * cart.quantity}</p>
+                                                                            <p className="ml-4">₱{(cart.price * cart.quantity).toLocaleString()}</p>
                                                                         </div>
                                                                         <p className="mt-1 text-sm text-gray-500">{cart.label}</p>
                                                                     </div>
@@ -111,7 +120,7 @@ const  HandleQuantity= async (cartid,quantity)=>{
                                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                                         <div className="flex justify-between text-base font-medium text-gray-900">
                                             <p>Subtotal</p>
-                                            <p>$262.00</p>
+<p>₱{ total.toLocaleString()}</p>
                                         </div>
                                         <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                         <div className="mt-6">

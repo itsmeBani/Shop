@@ -19,7 +19,7 @@ import Signup from "../Components/Signup.jsx";
 function CustomerView(props) {
 
     return (
-        <div className="flex h-screen  ">
+        <div className="flex h-auto ">
 
 
 

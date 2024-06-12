@@ -77,8 +77,8 @@ const [cartLength,setcartLength]=useState(0)
             }
         };
 
-        VIewUserCart(1);
-    }, [refreshcart]);
+        VIewUserCart(clientsession);
+    }, [refreshcart,clientsession]);
 
 
 

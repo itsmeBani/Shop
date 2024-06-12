@@ -10,6 +10,7 @@ function SuccessAlert(props) {
                 mount: { x: 0 },
                 unmount: { x : 100 }
                 ,
+
             }}
             icon={
 
@@ -27,7 +28,7 @@ function SuccessAlert(props) {
                     />
                 </svg>
             }
-            className=" rounded-none z-[222222] border-l-4 border-[#2ec946] right-2 top-2 bg-[#fff] font-medium text-[#2ec946] absolute w-auto"
+            className=" overflow-hidden rounded-none z-[222222] border-l-4 border-[#2ec946] right-2 top-2 bg-[#fff] font-medium text-[#2ec946] fixed w-auto"
         >
             {txt}
         </Alert>

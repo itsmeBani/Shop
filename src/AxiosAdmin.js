@@ -1,8 +1,7 @@
 // src/api.js
 import axios from 'axios';
 import {useEffect} from "react";
-
-const API_BASE_URL = 'http://192.168.100.84/3RDYEAR/HYBRID2SEM/samsangtech/api'; // Replace with your actual API base URL
+const API_BASE_URL = 'http://localhost/3RDYEAR/HYBRID2SEM/samsangtech/api'; // Replace with your actual API base URL
 
 export const createUser = (username, password, firstname, lastname, address) => {
     return axios.post(`${API_BASE_URL}/Register.php`, {
