@@ -57,7 +57,7 @@ function AddProductForm({setOpenForm, refresh,setrefresh}) {
 
             console.table(productData)
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Errors:', error);
         }
     };
 
