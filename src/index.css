@@ -9,26 +9,46 @@
     width: 10px;
     position: absolute;
     padding: 1rem;
+    opacity: 0;
     border-radius: 30px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent; /* Background of the track */
+    background: transparent;
+    opacity: 0;/* Background of the track */
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: transparent;
     border-radius: 30px;
-
+    opacity: 0;
     /* Background of the scrollbar thumb */
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Background of the scrollbar thumb on hover */
-}
+
 
 
 *{
 
     scroll-behavior: smooth;
+}
+@media screen and (max-width: 600px) {
+    .sidebarcon{
+
+    width: 0px;
+
+    }
+    .lgsidebar{
+
+        display: none;
+    }
+    .parentcon{
+        padding: 7px;
+    }
+    .sidebarbtn{
+        display: block;
+    }
+    .sidebarpd{
+        padding: 0;
+    }
 }
