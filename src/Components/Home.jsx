@@ -6,6 +6,7 @@ import phoneimg from "../assets/ph-galaxy-z-fold5-f946-sm-f946blbhphl-thumb-5372
 import charger from "../assets/ph-travel-adapter-45w-ep-ta845xbegww-frontblack-thumb-186655551.webp"
 import  laptop from  "../assets/realme-Book-i3.png"
 import  samsanglogo from  "../assets/Studio Shodwe.png"
+import {Link} from "react-router-dom";
 export default function Home() {
     const copyCode = () => {
         navigator.clipboard.writeText("TECHDEAL20");
@@ -48,7 +49,8 @@ export default function Home() {
 
 
             <div className="w-full gap-5 h-[6rem] flex">
-                <div
+
+                <Link to="/phones"
                     className="w-full p-3 place-items-center justify-center flex text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
 
                     <img className=" aspect-square h-24" src={phoneimg}/>
@@ -57,8 +59,9 @@ export default function Home() {
                    Phone
                     </p>
 
-                </div>
-                <div
+                </Link>
+
+                <Link to="/tablets"
                     className="w-full p-1 place-items-center justify-center flex text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
 
                     <img className=" aspect-square h-24" src={tablet}/>
@@ -67,8 +70,8 @@ export default function Home() {
                    Tablet
                     </p>
 
-                </div>
-                <div
+                </Link>
+                <Link to="/accessories"
                     className="w-full p-1 place-items-center justify-center flex text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
 
                     <img className=" h-24 aspect-square" src={charger}/>
@@ -76,9 +79,8 @@ export default function Home() {
                     <p className=" max-h-[60px] w-full  line-clamp-2   font-sans text-sm  font-normal leading-normal text-gray-700 opacity-75">
                         accessories
                     </p>
-
-                </div>
-                <div
+                </Link>
+                <Link to="/laptops"
                     className="w-full p-3 place-items-center justify-center flex text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
 
                     <img className=" h-24  aspect-square" src={laptop}/>
@@ -87,7 +89,7 @@ export default function Home() {
                         Laptop
                     </p>
 
-                </div>
+                </Link>
             </div>
 
 
