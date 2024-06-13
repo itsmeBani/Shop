@@ -68,3 +68,9 @@ export const AddProduct = (imageUrl, name, description, label, price) => {
 
     });
 };
+export const EditProduct = (product_id,imageUrl, name, description, label, price) => {
+    return axios.put(`${API_BASE_URL}/ProductCrud.php`, {
+        product_id, imageUrl, name, description, label, price
+
+    });
+};

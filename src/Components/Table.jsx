@@ -7,15 +7,18 @@ import { DeleteProduct, getALLProduct } from "../AxiosAdmin";
 import { CurrentUserContext } from "./CurrentUserProvider";
 import AddProductForm from "./AddProductForm";
 import { ViewAdminProduct } from "./ViewAdminProduct";
+import EditProductAdmin from "./EditProductAdmin.jsx";
 
 function Table() {
     const { setAdminToken } = useContext(CurrentUserContext);
     const paginate = pageNumber => setCurrentPage(pageNumber);
     const [OpenForm, setOpenForm] = useState(false);
+    const [EditForm, setEditForm] = useState(false);
     const [fetchproducts, setproducts] = useState([]);
     const [refresh, setrefresh] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
+    const [EditproductData, setEditProductData] = useState(null);
     useEffect(() => {
         const fetchALLproduct = async () => {
             try {
@@ -55,7 +58,10 @@ function Table() {
     const HandleOpenForm = () => {
         setOpenForm(true);
     };
-
+    const HandleEditForm = (data) => {
+        setEditProductData(data);
+        setEditForm(true);
+    };
     const HandleViewProduct = (product) => {
         setSelectedProduct(product);
         setVieProduct(!VieProduct);
@@ -134,7 +140,7 @@ function Table() {
                                                         }}
                                                         className="bg-blue-500"
                                                     >
-                                                        <IconButton className="bg-blue-500/90">
+                                                        <IconButton onClick={() => HandleEditForm(product)} className="bg-blue-500/90">
                                                             <PencilIcon className="h-5 w-5" />
                                                         </IconButton>
                                                     </Tooltip>
@@ -198,6 +204,8 @@ function Table() {
                 </div>
             </div>
             {OpenForm && <AddProductForm refresh={refresh} setrefresh={setrefresh} setOpenForm={setOpenForm} />}
+
+            {EditForm && <EditProductAdmin refresh={refresh} setrefresh={setrefresh} data={EditproductData} setOpenForm={setEditForm} />}
             <ViewAdminProduct HandleViewProduct={HandleViewProduct} VieProduct={VieProduct} selectedProduct={selectedProduct} />
         </>
     );
