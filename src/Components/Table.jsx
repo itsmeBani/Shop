@@ -78,18 +78,7 @@ function Table() {
                                     <span className="mr-3 font-semibold text-dark">Manage Products</span>
                                     <span className="mt-1 font-medium text-secondary-dark text-lg/normal">All Product from the Samsang Tech</span>
                                 </h3>
-                                <Tooltip
-                                    content="Log out"
-                                    animate={{
-                                        mount: { scale: 1, y: 0 },
-                                        unmount: { scale: 0, y: 25 },
-                                    }}
-                                    className="bg-red-500"
-                                >
-                                    <IconButton onClick={HandleLogoutAdmin} className="px-5 flex bg-red-500">
-                                        <PowerIcon className="h-5 w-5" />
-                                    </IconButton>
-                                </Tooltip>
+
                             </div>
                             <div className="px-9 flex gap-1 py-2">
                                 <Button onClick={HandleOpenForm} className="flex bg-green-500/90 justify-center place-items-center px-5 gap-1">
@@ -118,18 +107,18 @@ function Table() {
                                                             <img src={product.imageUrl} className="w-[50px] h-[50px] object-cover inline-block shrink-0 rounded-2xl" alt="" />
                                                         </div>
                                                         <div className="flex flex-col justify-start">
-                                                            <p className="mb-1 font-semibold transition-colors duration-200 ease-in-out text-md/normal opacity-80 text-secondary-inverse hover:text-primary">{product.name}</p>
+                                                            <p className="mb-1 font-normal transition-colors duration-200 ease-in-out text-md/normal opacity-80 text-secondary-inverse hover:text-primary">{product.name}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td className="p-3 pr-0 text-start">
-                                                    <span className="font-semibold text-light-inverse text-md/normal">{product.description.slice(0, 50)}....</span>
+                                                    <span className="font-normal text-light-inverse text-md/normal">{product.description.slice(0, 20)}....</span>
                                                 </td>
                                                 <td className="p-3 pr-0 text-end">
-                                                    <span className={`text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-semibold text-[.95rem] leading-none text-primary bg-primary-light rounded-lg ${product.label.toLowerCase() === "phones" ? "bg-green-500/20" : product.label.toLowerCase() === "laptops" ? "bg-red-500/20" : product.label.toLowerCase() === "accessories" ? "bg-blue-500/20" : ""}`}>{product.label}</span>
+                                                    <span className={`text-center  align-baseline inline-flex px-4 py-3 mr-auto items-center font-font-normal text-[.95rem] leading-none text-primary bg-primary-light rounded-lg ${product.label.toLowerCase() === "phones" ? "bg-green-500/20" : product.label.toLowerCase() === "laptops" ? "bg-red-500/20" : product.label.toLowerCase() === "accessories" ? "bg-blue-500/20" : ""}`}>{product.label}</span>
                                                 </td>
                                                 <td className="p-3 pr-0 text-end">
-                                                    <span className="text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-semibold text-[.95rem] leading-none text-primary rounded-lg">{product.price}</span>
+                                                    <span className="text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-normal text-[.95rem] leading-none text-primary rounded-lg">{product.price}</span>
                                                 </td>
                                                 <td className="pr-0 text-center w-full h-full p-3 flex place-items-center justify-center w-full gap-1">
                                                     <Tooltip

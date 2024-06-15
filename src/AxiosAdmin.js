@@ -1,7 +1,7 @@
 // src/api.js
 import axios from 'axios';
 import {useEffect} from "react";
-const API_BASE_URL = 'https://bsit3rdyear.org/Worksheets/ws5-2/api/api/'; // Replace with your actual API base URL
+const API_BASE_URL = 'http://localhost/3RDYEAR/HYBRID2SEM/samsangtech/api/'; // Replace with your actual API base URL
 
 export const createUser = (username, password, firstname, lastname, address) => {
     return axios.post(`${API_BASE_URL}/Register.php`, {
@@ -12,7 +12,17 @@ export const createUser = (username, password, firstname, lastname, address) => 
         address
     });
 };
+export const UpdateUser = (user_id,username,  firstname, lastname, address,created_at) => {
+    return axios.put(`${API_BASE_URL}/ManageCustomer.php`, {
+        user_id,
+        username,
 
+        firstname,
+        lastname,
+        address,
+        created_at
+    });
+};
 export const userLogin = (username, password) => {
     return axios.post(`${API_BASE_URL}/Login.php`, {
         username,
@@ -31,6 +41,10 @@ export  const getALLProduct = ()=>{
     return axios.get(`${API_BASE_URL}/ProductCrud.php`)
 }
 
+
+export  const getALLCustomer = ()=>{
+    return axios.get(`${API_BASE_URL}/ManageCustomer.php`)
+}
 
 
 export const DeleteProduct = (id) => {

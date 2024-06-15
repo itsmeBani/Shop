@@ -1,11 +1,12 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import axios from 'axios';
 import {Button, Card, CardBody, CardFooter, Dialog, Input, Typography} from "@material-tailwind/react";
 import {CurrentUserContext} from "./CurrentUserProvider.jsx";
 import {Link} from "react-router-dom";
 import {createUser, userLogin,} from "../AxiosAdmin.js";
 import SuccessAlert from "./SuccessAlert.jsx";
-
+import { useNavigate } from 'react-router-dom';
+import {XMarkIcon} from "@heroicons/react/24/outline/index.js";
 function Signin() {
     const {
         opensignin, handleOpenSignin, handleOpenSignup,setAdminToken,
@@ -17,7 +18,9 @@ function Signin() {
     const [message, setMessage] = useState('');
     const [error, setError] = useState(null);
     const [Success, setSuccess] = useState('');
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         console.log(username, password);
         try {
@@ -43,7 +46,7 @@ function Signin() {
 
                 }
                 if(response.data.message.role==="admin"){
-
+                    navigate('/');
                     setAdminToken(response.data.message.data)
                 }
 
@@ -59,14 +62,36 @@ function Signin() {
         }
     };
 
+
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    // Function to update screenWidth state on window resize
+    const updateScreenWidth = () => {
+        setScreenWidth(window.innerWidth);
+    };
+
+    // Effect to add event listener for window resize
+    useEffect(() => {
+        window.addEventListener('resize', updateScreenWidth);
+        return () => {
+            window.removeEventListener('resize', updateScreenWidth);
+        };
+    }, []); // Empty dependency array means this effect runs only once
+
+    // Determine size based on screen width
+    const size = screenWidth <= 500 ? 'xl' : 'sm';
+
+
+
+
     return (
         <>
             {Success && <SuccessAlert txt={Success}/>}
             <Dialog
-                size=""
+size={size}
                 open={opensignin}
                 handler={handleOpenSignin}
-                className="bg-transparent flex shadow-none"
+                className="bg-transparent flex h-full  md:h-auto pt-10    md:pb-[0rem]   md:pt-0   pb-[40rem] w-full shadow-none"
             >
 
 
@@ -77,7 +102,15 @@ function Signin() {
 
 
 
-                <Card    className="w-[30rem] ">
+                <Card    className="w-full   h-full ">
+
+                    <button
+                        color="red"
+                        onClick={handleOpenSignin}
+                        className="absolute top-0 z-10 p-2  right-0"
+                    >
+                        <XMarkIcon className="w-7 h-7  text-blue-gray-700" />
+                    </button>
                     <CardBody className="flex flex-col">
                         <Typography variant="h4" color="blue-gray">
                             Sign In
@@ -121,6 +154,7 @@ function Signin() {
                             </a>
                         </Typography>
                     </CardFooter>
+
                 </Card>
             </Dialog>
         </>

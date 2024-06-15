@@ -43,7 +43,7 @@ function AddProductForm({setOpenForm, refresh,setrefresh}) {
                 })
                 setSuccess(true)
 
-
+                HandleCloseForm()
 
                 const interval = setTimeout(() => {
                     setSuccess(false)

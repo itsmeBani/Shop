@@ -49,8 +49,9 @@ function EditProductAdmin({setOpenForm, refresh,setrefresh,data}) {
 
                 const interval = setTimeout(() => {
                     setSuccess(false)
-                }, 2000)
 
+                    HandleCloseForm()
+                }, 2000)
 
                 return () => clearTimeout(interval);
             } else {

@@ -1,9 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, Card, CardBody, CardFooter, Dialog, Input, Typography} from "@material-tailwind/react";
 import {Link} from "react-router-dom";
 import {CurrentUserContext} from "./CurrentUserProvider.jsx";
 import {createUser} from "../AxiosAdmin.js";
 import SuccessAlert from "./SuccessAlert.jsx";
+import {XMarkIcon} from "@heroicons/react/24/outline/index.js";
 
 function Signup(props) {
 
@@ -61,25 +62,61 @@ function Signup(props) {
         }
     };
     const {setopensignup, opensignin, opensignup, handleOpenSignup, handleOpenSignin} = useContext(CurrentUserContext)
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    // Function to update screenWidth state on window resize
+    const updateScreenWidth = () => {
+        setScreenWidth(window.innerWidth);
+    };
+
+    // Effect to add event listener for window resize
+    useEffect(() => {
+        window.addEventListener('resize', updateScreenWidth);
+        return () => {
+            window.removeEventListener('resize', updateScreenWidth);
+        };
+    }, []); // Empty dependency array means this effect runs only once
+
+    // Determine size based on screen width
+    const size = screenWidth <= 500 ? 'xl' : 'sm';
+
+
+
+
+
+
     return (
         <>
             {Success && <SuccessAlert txt={Success}/>}
 
+
             <Dialog
-                size="sm"
+                size={size}
                 open={opensignup}
                 handler={handleOpenSignup}
-                className="bg-transparent justify-center flex shadow-none"
+                className="bg-transparent flex h-full z-[222222]   md:h-auto     md:pb-[0rem]   md:pt-0   pb-[4rem] w-full shadow-none"
+
             >
 
-                <form onSubmit={handleRegister}>
-                    <Card className="w-[30rem] ">
-                        <CardBody className="flex flex-col gap-4">
+
+
+                    <Card className=" w-full h-full md:w-[30rem]  ">
+                        <button
+                            color="red"
+                            onClick={handleOpenSignup}
+                            className="absolute top-0  p-2   z-[222222]  right-0"
+                        >
+                            <XMarkIcon className="w-7 h-7  text-blue-gray-700" />
+                        </button>
+
+                        <form onSubmit={handleRegister} className="w-full relative ">
+
+                        <CardBody className="flex flex-col  gap-2 md:gap-4">
                             <Typography variant="h4" color="blue-gray">
                                 Sign up
                             </Typography>
                             <Typography
-                                className="mb-3 font-normal"
+                                className="mb-1 font-normal"
                                 variant="paragraph"
                                 color="gray"
                             >
@@ -87,27 +124,17 @@ function Signup(props) {
                             </Typography>
 
 
-                            <Typography className="-mb-2" variant="h6">
-                                User name
-                            </Typography>
+
                             <Input onChange={handleChange} value={formData.username} name="username" label="User name"
                                    size="lg"/>
-                            <Typography className="-mb-2" variant="h6">
-                                First name
-                            </Typography>
+
                             <Input onChange={handleChange} value={formData.firstname} name="firstname"
                                    label="  First name" size="lg"/>
-                            <Typography className="-mb-2" variant="h6">
-                                Last name
-                            </Typography>
+
                             <Input onChange={handleChange} value={formData.lastname} name="lastname" label="Last name"
-                                   size="lg"/> <Typography className="-mb-2" variant="h6">
-                            Address
-                        </Typography>
+                                   size="lg"/>
                             <Input onChange={handleChange} value={formData.address} name="address" label="Address"
-                                   size="lg"/> <Typography className="-mb-2" variant="h6">
-                            Password
-                        </Typography>
+                                   size="lg"/>
                             <Input onChange={handleChange} value={formData.password} name="password" label="Password"
                                    size="lg"/>
                         </CardBody>
@@ -130,8 +157,9 @@ function Signup(props) {
                                 </p>
                             </Typography>
                         </CardFooter>
+                        </form>
                     </Card>
-                </form>
+
             </Dialog>
         </>
     );

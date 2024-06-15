@@ -48,7 +48,7 @@ export default function Home() {
             </Carousel>
 
 
-            <div className="w-full gap-5 h-[6rem] flex">
+            <div className="w-full gap-5 h-[6rem] flex flex-col md:flex-row ">
 
                 <Link to="/phones"
                     className="w-full p-3 place-items-center justify-center flex text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">

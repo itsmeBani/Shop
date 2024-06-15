@@ -47,27 +47,27 @@ function Card({name, price, description, imageUrl, product_id, label}) {
                     />
                 </div>
                 <div className="md:p-6  p-2  pb-0">
-                    <div className="flex flex-col   md:flex-col   justify-between mb-2">
-                        <p className=" w-full font-sans font-bold line-clamp-1  max-h-[60px]     text-base antialiased  text-blue-gray-900">
+                    <div className="flex flex-col   md:flex-col   justify-between mb-">
+                        <p className=" w-full font-sans font-normal line-clamp-1  max-h-[60px]     text-base antialiased  text-blue-gray-900">
                             {name}
                         </p>
                         <p className="  line-clamp-1 font-sans text-base antialiased text-xs md:text-[15px] md:mt-2 md:text-md  text-blue-gray-900">
                             ₱{price}
                         </p>
                     </div>
-                    <p className=" max-h-[60px]  line-clamp-2   font-sans text-sm  font-normal  text-gray-700 opacity-75">
+                    <p className=" max-h-[60px]  line-clamp-1     font-sans text-sm  font-normal  text-gray-700 opacity-75">
                         {description}
                     </p>
 
                 </div>
-                <div className=" p-3 md:px-6 md:pb-6  pt-0 flex w-full place-items-center justify-end">
+                <div className=" p-1 md:px-6 md:pb-6  pt-0 flex w-full place-items-center justify-end">
                     <Button   className="w-full hidden md:block"
                             type="button ">
                         Add to Cart
                     </Button>
 
                     <IconButton
-                                className="w-full block md:hidden"
+                                className="w-full block md:hidden bg-transparent shadow-none p-0 text-gray-500"
                                 type="button">
                         <ShoppingCartIcon className="w-5 h-5"/>
                     </IconButton>
