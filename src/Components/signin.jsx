@@ -38,7 +38,8 @@ function Signin() {
                     setError(null)
                     const interval = setTimeout(() => {
                         setSuccess("")
-                    }, 2000)
+                        handleOpenSignin()
+                    }, 1000)
 
 
                     return () => clearTimeout(interval);

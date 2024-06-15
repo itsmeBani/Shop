@@ -168,7 +168,7 @@ const  {session,opensignin,handleOpenSignin,setopensignin,clientsession,setClien
     return (
 <div className="w-[20rem] sidebarcon">
     <div className="p-4 py-4 hidden sidebarbtn ">
-        <IconButton className="absolute z-[1]" onClick={openDrawer}><Bars3BottomLeftIcon className="h-5 w-5"/></IconButton>
+        <IconButton className="absolute z-[1] bg-white text-black " onClick={openDrawer}><Bars3BottomLeftIcon className="h-5 w-5"/></IconButton>
     </div>
 <div className="lgsidebar">
     <SideMenu/>

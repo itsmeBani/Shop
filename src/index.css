@@ -52,3 +52,12 @@
         padding: 0;
     }
 }
+
+.cardbg{
+width: 100%;
+  background-image: url('https://techengage.com/wp-content/uploads/2020/12/hector-martinez-unsplash.jpg');
+}
+.cardbg2{
+    width: 100%;
+    background-image: url('https://images.pexels.com/photos/7989739/pexels-photo-7989739.jpeg?cs=srgb&dl=pexels-carlos-jairo-7989739.jpg&fm=jpg');
+}
