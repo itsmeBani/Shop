@@ -144,7 +144,7 @@ const checkVoucher=() => {
                                         <div className="flex justify-between text-base font-medium text-gray-900">
                                             <p>Subtotal</p>
 
-                                            <p> ₱{ errorvoucher? total.toLocaleString():  (total - (total * 20 / 100)).toLocaleString()  }</p>
+                                            <p> ₱{ voucher === "TECHDEAL20"  ? (total - (total * 20 / 100)).toLocaleString()  :  total.toLocaleString() }</p>
                                         </div>
                                         <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                         <div className="mt-6">
