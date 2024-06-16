@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Button, IconButton} from "@material-tailwind/react";
+import {Button, IconButton, Input, Typography} from "@material-tailwind/react";
 import {DeleteCart, getALLProduct, updateCartItemQuantity, ViewCart} from "../AxiosAdmin.js";
 import {MinusIcon, PlusIcon, ShoppingCartIcon} from "@heroicons/react/24/outline/index.js";
 import {CurrentUserContext} from "./CurrentUserProvider.jsx";
@@ -8,6 +8,8 @@ function Cart({setcart}) {
 
     const {    refreshcart,setRefreshCart, viewcart,setViewCart,} = useContext(CurrentUserContext);
 
+const  [voucher,setvoucher]=useState(null)
+    const  [errorvoucher,seterrorvoucher]=useState(null)
 
 
 
@@ -40,8 +42,16 @@ let total=0
         console.log(total)
     }
 
+const checkVoucher=() => {
+    if (voucher === "TECHDEAL20"){
+        seterrorvoucher(true)
 
+    }else {
+        seterrorvoucher(false)
 
+    }
+
+    }
     return (
         <>
 
@@ -56,7 +66,9 @@ let total=0
                                         <div className="flex items-start justify-between">
                                             <h2 className="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
                                             <div className="ml-3 flex h-7 items-center">
-                                                <button type="button" onClick={()=>{setcart(false)}} className="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
+                                                <button type="button" onClick={()=>{
+                                                    setcart(false)
+                                                    setvoucher(null)}} className="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
                                                     <span className="absolute -inset-0.5"></span>
                                                     <span className="sr-only">Close panel</span>
                                                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
@@ -117,10 +129,19 @@ let total=0
                                         </div>
                                     </div>
                                     </div>
+                                    <div className="px-7 w-full flex gap-2 place-items-center justify-start py-5">
+
+
+         <Input label="Voucher code" className="w-full" error={!errorvoucher}  onChange={(e)=>{setvoucher(e.target.value)}}/>
+
+         <Button className={""} onClick={checkVoucher}>Enter</Button>
+
+                                    </div>
                                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                                         <div className="flex justify-between text-base font-medium text-gray-900">
                                             <p>Subtotal</p>
-<p>₱{ total.toLocaleString()}</p>
+
+                                            <p> ₱{ errorvoucher? (total - (total * 20 / 100)).toLocaleString() :total.toLocaleString() }</p>
                                         </div>
                                         <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                         <div className="mt-6">
