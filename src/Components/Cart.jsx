@@ -44,10 +44,10 @@ let total=0
 
 const checkVoucher=() => {
     if (voucher === "TECHDEAL20"){
-        seterrorvoucher(true)
+        seterrorvoucher(false)
 
     }else {
-        seterrorvoucher(false)
+        seterrorvoucher(true)
 
     }
 
@@ -129,19 +129,22 @@ const checkVoucher=() => {
                                         </div>
                                     </div>
                                     </div>
-                                    <div className="px-7 w-full flex gap-2 place-items-center justify-start py-5">
+                                    <div className="px-7 w-full flex flex-col gap-2 place-items-center justify-start py-1">
 
 
-         <Input label="Voucher code" className="w-full" error={!errorvoucher}  onChange={(e)=>{setvoucher(e.target.value)}}/>
+         <Input label="Voucher code" className="" error={errorvoucher}  onChange={(e)=>{setvoucher(e.target.value)}}/>
 
-         <Button className={""} onClick={checkVoucher}>Enter</Button>
+
+
+
+         <Button className={"w-full bg-gradient-to-br from-purple-600 to-indigo-600"} onClick={checkVoucher}>Enter</Button>
 
                                     </div>
                                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                                         <div className="flex justify-between text-base font-medium text-gray-900">
                                             <p>Subtotal</p>
 
-                                            <p> ₱{ errorvoucher? (total - (total * 20 / 100)).toLocaleString() :total.toLocaleString() }</p>
+                                            <p> ₱{ errorvoucher? total.toLocaleString():  (total - (total * 20 / 100)).toLocaleString()  }</p>
                                         </div>
                                         <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                         <div className="mt-6">
