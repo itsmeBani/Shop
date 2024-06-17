@@ -51,8 +51,22 @@
     .sidebarpd{
         padding: 0;
     }
-}
+    .introtext{
+        font-size: 12px;
 
+    }
+    .btnr{
+
+        font-size: 10px;
+        padding: 3px 7px;
+    }
+
+
+}
+.cardbgmain{
+    width: 100%;
+    background-image: url("./assets/rev-2024-bespoke-ai-n01-kv-pc.webp");
+}
 .cardbg{
 width: 100%;
   background-image: url('https://techengage.com/wp-content/uploads/2020/12/hector-martinez-unsplash.jpg');

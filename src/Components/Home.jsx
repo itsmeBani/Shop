@@ -11,7 +11,7 @@ import {CurrentUserContext} from "./CurrentUserProvider.jsx";
 import {PowerIcon} from "@heroicons/react/24/solid/index.js";
 import {UserIcon} from "@heroicons/react/24/outline/index.js";
 export default function Home() {
-    const  {session,opensignin,handleOpenSignin,setopensignin,clientsession,setClientToken} = useContext(CurrentUserContext)
+    const  {session,opensignin,handleOpenSignin,setopensignin,handleOpenSignup,clientsession,setClientToken} = useContext(CurrentUserContext)
 
     const copyCode = () => {
         navigator.clipboard.writeText("TECHDEAL20");
@@ -36,10 +36,18 @@ export default function Home() {
                     </div>
                 )}
             >
-                <img
-                    src={img2} alt="image 1"
-                    className="h-full w-full object-cover"
-                />
+
+                <div className="w-full  h-full rounded-md overflow-hidden bg-cover bg-center  cardbgmain">
+                    <div className="bg-gray-900 bg-opacity-50 flex items-center  h-full">
+                        <div className="px-20 max-w-xl">
+                            <h2 className="text-2xl  text-white font-semibold introtext">Welcome to SamSang Tech</h2>
+                            <p className="mt-1 text-gray-200 introtext">Explore the latest gadgets that enhance your daily life with innovative features and designs.</p>
+                            <button className="flex btnr mt-3 bg-blue-500 hover:bg-blue-600 text-white text-sm py-2 px-4 rounded focus:outline-none">        <Link to={"/products"}>Shop Now</Link>
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <img
                     src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw2fHxjb2RlfGVufDB8MHx8fDE2OTQwOTg0MTZ8MA&ixlib=rb-4.0.3&q=80&w=1080"
                     alt="image 2"
@@ -50,6 +58,8 @@ export default function Home() {
                     alt="image 3"
                     className="h-full w-full object-cover"
                 />
+
+
             </Carousel>
 
 
@@ -102,26 +112,38 @@ export default function Home() {
 
 
             <div className="flex flex-col  md:flex-row w-full  gap-2">
-                <div className="w-full  h-64 rounded-md overflow-hidden bg-cover bg-center  cardbg">
-                    <div className="bg-gray-900 bg-opacity-50 flex items-center  h-full">
+                <div className="flex flex-col md:flex-row w-full gap-2">
+                <div className="w-full h-64 rounded-md overflow-hidden bg-cover bg-center cardbg">
+                    <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
                         <div className="px-10 max-w-xl">
-                            <h2 className="text-2xl text-white font-semibold">Discover New Gadgets</h2>
-                            <p className="mt-2 text-gray-400">Explore the latest gadgets that enhance your daily life with innovative features and designs.</p>
-                            <button className="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
-                                <Link to={"/products"}>Shop Now</Link>
-                                <svg className="h-5 w-5 mx-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <h2 className="text-1xl text-white font-semibold">Discover New Gadgets</h2>
+                            <p className="mt-2 text-gray-200 introtext text-sm md:text:md">
+                                Dive into the world of cutting-edge technology. Uncover the latest gadgets designed to make your life smarter and more convenient.
+                            </p>
+                            <button onClick={handleOpenSignup} className="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
+                                <Link to="/products">Register Now</Link>
+                                <svg
+                                    className="h-5 w-5 mx-2"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
                                     <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                 </svg>
                             </button>
                         </div>
                     </div>
                 </div>
+            </div>
 
                 <div className="w-full h-64  rounded-md overflow-hidden bg-cover bg-center md:w-1/2 cardbg2">
 
                         <div className="flex items-center h-full">
                             <div className="px-6 py-4">
-                                <h2 className="text-xl font-semibold text-white mb-2">Smart Gadgets</h2>
+                                <h2 className="text-1xl font-semibold text-white mb-2">Smart Gadgets</h2>
                                 <p className="text-gray-300 text-sm">Discover smart gadgets that make your life easier and more connected.</p>
                                 {
                                     clientsession ?  <button className="mt-3 bg-blue-500 hover:bg-blue-600 text-white text-sm py-2 px-4 rounded focus:outline-none" >
