@@ -39,23 +39,23 @@ function Card({name, price, description, imageUrl, product_id, label}) {
             <div onClick={HandleViewProduct} className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl  w-full">
 
                 <div
-                    className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-26">
+                    className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded- h-26">
                     <img
                         src={imageUrl}
                         alt={name}
                         className="object-contain w-full h-[90px] md:h-[200px]"
                     />
                 </div>
-                <div className="md:p-6  p-2  pb-0">
+                <div className="md:p-6  px-3  pb-0">
                     <div className="flex flex-col   md:flex-col   justify-between mb-">
-                        <p className=" w-full font-sans font-normal line-clamp-1  max-h-[60px]     text-base antialiased  text-blue-gray-900">
+                        <p className=" w-full font-sans font-normal line-clamp-1  max-h-[60px]   text-[13px]  md:text-base antialiased  text-blue-gray-900">
                             {name}
                         </p>
-                        <p className="  line-clamp-1 font-sans text-base antialiased text-xs md:text-[15px] md:mt-2 md:text-md  text-blue-gray-900">
-                            ₱{price}
+                        <p className="  line-clamp-1 font-sans text-base antialiased text-xs md:text-[15px] md:mt-2 md:text-md  text-blue-500">
+                            ₱{ new Intl.NumberFormat('en-US').format(price)}
                         </p>
                     </div>
-                    <p className=" max-h-[60px]  line-clamp-1     font-sans text-sm  font-normal  text-gray-700 opacity-75">
+                    <p className=" max-h-[60px]  line-clamp-1 pr-2     font-sans text-sm  font-normal  text-gray-700 opacity-75">
                         {description}
                     </p>
 
@@ -67,7 +67,7 @@ function Card({name, price, description, imageUrl, product_id, label}) {
                     </Button>
 
                     <IconButton
-                                className="w-full block md:hidden bg-transparent shadow-none p-0 text-gray-500"
+                                className="w-full block md:hidden bg-transparent shadow-none p-0 text-gray-700"
                                 type="button">
                         <ShoppingCartIcon className="w-5 h-5"/>
                     </IconButton>
